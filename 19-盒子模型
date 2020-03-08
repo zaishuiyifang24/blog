@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>盒子模型</title>
+		<style type="text/css">
+			.box
+			{
+				/*
+				 * 使用width来设置盒子内容区的宽度
+				 * 使用height来设置盒子内容区的高度
+				 * 		width和height只是设置内容区的大小，而不是盒子的整个大小
+				 * 			盒子可见框的大小由内容区，内边距和边框共同决定
+				 */
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				/*
+				 * 为元素设置边框
+				 * 		要为一个元素设置边框必须指定三个样式,缺一不可
+				 * 			border-width：边框的宽度
+				 * 			border-color：边框的颜色
+				 * 			border-style：边框的样式
+				 * 
+				 * 大部分浏览器中，边框的宽度和颜色都有默认值，而边框的样式默认值都是none
+				 * 
+				 * 使用border-width可以分别指定四个边框的宽度
+				 * border-width ，border-color ，border-style
+				 * 		如果指定四个值
+				 * 			则四个值分别设置个上 右 下 左，按照顺时针的方向设置
+				 * 		如果指定三个值
+				 * 			三个值分别设置给    上  左右  下
+				 * 		如果指定两个值
+				 * 			两个值分别设置给    上下  左右
+				 * 		如果指定一个值
+				 * 			则四边全是该值	
+				 * 
+				 * 除了border-width，CSS中还提供了四个border-XXX-width
+				 * 		XXX的值可以设置为 top right bottom left
+				 * 	专门用来设置指定边的宽度
+				 */
+				border-width: 10px;
+				border-color: green red;
+				
+				
+				/*
+				 * 设置边框的样式
+				 * 		可选值：
+				 * 			none， 默认值，没有边框
+				 * 			solid 实线
+				 * 			dotted 点状
+				 * 			dashed 虚线
+				 * 			double虚线
+				 */
+				border-style: solid;
+				
+			
+			}
+			.box1
+			{
+					/*
+				 * border
+				 * 		-边框的简写样式，通过它可以同时设置四个边框的样式， 宽度，颜色
+				 * 		-而且没有任何顺序要求
+				 * 		-border一指定就是同时指定四个边不能分别指定
+				 * 
+				 * border-XXX
+				 * 		XXX：top right bottom left
+				 * 			可以单独设置四个边的样式，规则和border一样只不过它只对一个边生效
+				 */
+				width: 100px;
+				height: 100px;
+				background-color: greenyellow;
+				border:blue solid 10px;
+				border-right: none;
+			}
+			
+			.box2
+			{
+				width: 100px;
+				height: 100px;
+				background-color: deepskyblue;
+				
+				/*设置边框
+				 */
+				border: 10px orange solid;
+				/*
+				 * 内边距（padding），指的是盒子的内容区与盒子边框之间的距离
+				 * 	一共有四个方向的内边距，可以通过：
+				 * 		padding-top
+				 * 		padding-right
+				 * 		padding-bottom
+				 * 		padding-left
+				 * 			来设置四个方向的内边距
+				 * 内边距会影响盒子的可见框的大小，元素的背景会延伸到内边距
+				 * 	盒子的大小由内容区、内边距和边框共同决定
+				 * 		盒子的可见框的宽度=border-left-width + padding-left + width + padding-right + border-right-width
+				 * 
+				 * 	
+				 */
+				/*设置上内边距*/
+				padding-top: 10px;
+				padding-right: 10px;
+				padding-left: 10px;
+				padding-bottom: 10px;
+				/*
+				 * 使用padding可以同时设置四个边框的样式，规则和border-width一致
+				 */
+				padding:100px;
+			}
+			/*
+			 * 创建子元素box3将box2内容占满
+			 */
+			.box3{
+				width: 100%;
+				height: 100%;
+				background-color: green;
+			}
+			.box4{
+				width: 100px;
+				height: 100px;
+				background-color: #bfa;
+				border: 10px solid yellow;
+				/*
+				 * 外边距指的是当前盒子与其他盒子之间的距离
+				 * 		他不会影响可见框的大小，而是会影响到盒子的位置
+				 * 	盒子有四个方向的外边距
+				 * 		margin-top
+				 * 		margin-right
+				 * 		margin-bottom
+				 * 		margin-left
+				 * 			
+				 * 	由于页面中元素都是靠左靠上摆放的
+				 * 		所以注意当我们设置上和左外边距时，会导致盒子自身的位置发生改变
+				 * 			而如果是设置右和下外边距会改变其他盒子的位置
+				 */
+				/*
+				 * 设置盒子上外边框与其他盒子之间的距离
+				 * 
+				 */
+				margin-top: 10px;
+				/*
+				 * 外边距也可以是负值
+				 * 	 如果外边距设置的是负值，则元素会向反方向移动
+				 */
+				margin-left: -10px;
+				/*
+				 * margin还可以设置为auto，auto一般只设置给水平方向的margin
+				 * 		如果只指定，左外边距或右边距的margin设置为auto则会将外边距设置为最大值
+				 * 		垂直方向外边距如果设置为auto，则外边距默认为0
+				 * 如果将left和right同时设置为auto，则会将两边的外边距设置为相同的值
+				 * 		就可以使元素自动在父元素中居中，所以我们经常将左右外边距设置为auto
+				 * 		以使子元素在父元素中水平居中
+				 */
+				
+				margin-left: auto;
+				margin-right: auto;
+				/*
+				 * 外边距同样可以使用简写属性margin，可以同时设置四个方向的外边距
+				 * 	规则和padding一样
+				 */
+				margin:10px 20px 30px 40px;
+				
+				
+			}
+			/*
+			 * 垂直外边距重叠
+			 * 		-在网页中相邻的垂直方向的外边距会发生外边距的重叠
+			 * 			所谓的外边距的重叠指兄弟元素之间的相邻外边距会取最大值而不是取和
+			 * 
+			 *		如果父子元素的垂直外边距相邻了，则子元素的外边距会设置给父元素
+			 * 			解决外边距相邻用元素隔开使其不相邻
+			 */
+			.box5{
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				/*
+				 * 为box5设置一个上边框
+				 */
+				border-top: 1px yellow solid;
+			}
+			.box6{
+				width: 100px;
+				height: 100px;
+				background-color: orange;
+				margin-top: 50px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<div class="box1"></div>
+		<div class="box2"><div class="box3"></div></div>
+		<div class="box4"></div>
+		<div class="box5"><div class="box6"></div></div>
+	</body>
+</html>
